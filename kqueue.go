@@ -55,7 +55,7 @@ func NewWatcher() (*Watcher, error) {
 		externalWatches: make(map[string]bool),
 		Events:          make(chan Event),
 		Errors:          make(chan error),
-		done:            make(chan bool),
+		done:            make(chan bool, 1),
 	}
 
 	go w.readEvents()
